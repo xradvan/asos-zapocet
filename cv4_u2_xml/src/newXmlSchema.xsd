@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/newXmlSchema"
+    xmlns:tns="http://xml.netbeans.org/schema/newXmlSchema"
+    elementFormDefault="qualified">
+    <xsd:complexType name="Jedlo">
+        <xsd:sequence>
+            <xsd:element name="nazov" type="xsd:string"></xsd:element>
+            <xsd:element name="cena" type="xsd:double"></xsd:element>
+            <xsd:element name="popis" type="xsd:string"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Menu">
+        <xsd:sequence>
+            <xsd:element name="ponuka" type="tns:Jedlo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="DenEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="PONDELOK"/>
+            <xsd:enumeration value="UTOROK"/>
+            <xsd:enumeration value="STREDA"/>
+            <xsd:enumeration value="STVRTOK"/>
+            <xsd:enumeration value="PIATOK"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="getMenu-in" type="tns:DenEnum"></xsd:element>
+    <xsd:element name="getMenu-out" type="tns:Menu"></xsd:element>
+    <xsd:element name="addJedlo">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="j" type="tns:Jedlo"></xsd:element>
+                <xsd:element name="d" type="tns:DenEnum"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
