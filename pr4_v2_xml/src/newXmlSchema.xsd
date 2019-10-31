@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/newXmlSchema"
+    xmlns:tns="http://xml.netbeans.org/schema/newXmlSchema"
+    elementFormDefault="qualified">
+    <xsd:complexType name="Zmluva">
+        <xsd:sequence>
+            <xsd:element name="cislo" type="tns:CisloZmluvyType"></xsd:element>          
+            <xsd:element name="uzavreta" type="xsd:time"></xsd:element>
+            <xsd:element name="druh" type="tns:DruhPoisteniaEnum"></xsd:element>
+            <xsd:element name="ucastnik" type="tns:Osoba" maxOccurs="unbounded"></xsd:element>
+            <xsd:element name="majitel" type="xsd:IDREF"></xsd:element>
+            <xsd:element name="poistenec" type="xsd:IDREFS" maxOccurs="1"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="DruhPoisteniaEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Cestovne"/>
+            <xsd:enumeration value="Zivotne"/>
+            <xsd:enumeration value="Urazove"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Osoba">
+        <xsd:sequence>
+            <xsd:element name="meno" type="xsd:string"></xsd:element>
+            <xsd:element name="priezvisko" type="xsd:string"></xsd:element>
+            <xsd:element name="datumNar" type="xsd:date"></xsd:element>
+            <xsd:element name="id" type="xsd:ID"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="CisloZmluvyType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Z[0-9]*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="navrh-in" type="tns:Zmluva"></xsd:element>
+    <xsd:element name="navrh-out" type="tns:Zmluva"></xsd:element>
+    <xsd:element name="navrh-fail" type="xsd:string"></xsd:element>
+    <xsd:element name="get-in" type="tns:Osoba"></xsd:element>
+</xsd:schema>

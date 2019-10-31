@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/pr4_v2_xml/src/newWSDL" xmlns:ns="http://xml.netbeans.org/schema/newXmlSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="newWSDL" targetNamespace="http://j2ee.netbeans.org/wsdl/pr4_v2_xml/src/newWSDL">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/pr4_v2_xml/src/newWSDL">
+            <xsd:import namespace="http://xml.netbeans.org/schema/newXmlSchema" schemaLocation="http://localhost:8080/pr4_v2_ws/newWSDLService?xsd=1"/>
+        </xsd:schema>
+    </types>
+    
+    <message name="navrhZmluvyRequest">
+        <part name="part1" element="ns:navrh-in"/>
+    </message>
+    <message name="navrhZmluvyResponse">
+        <part name="part1" element="ns:navrh-out"/>
+    </message>
+    <message name="navrhZmluvyFault">
+        <part name="part1" element="ns:navrh-fail"/>
+    </message>
+    
+    <message name="getOsobaRequest">
+        <part name="part1" element="ns:get-in"/>
+    </message>
+    
+    
+    <portType name="newWSDLPortType">
+        
+        <operation name="navrhZmluvy">
+            <input name="input1" message="tns:navrhZmluvyRequest"/>
+            <output name="output1" message="tns:navrhZmluvyResponse"/>
+            <fault name="fault1" message="tns:navrhZmluvyFault"/>
+        </operation>
+        
+        <operation name="getOsoba">
+            <input name="input1" message="tns:getOsobaRequest"/>
+        </operation>
+        
+      
+    </portType>
+    <binding name="newWSDLBinding" type="tns:newWSDLPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="navrhZmluvy">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault1">
+                <soap:fault name="fault1" use="literal"/>
+            </fault>
+        </operation>
+        
+         <operation name="getOsoba">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+        
+    </binding>
+    <service name="newWSDLService">
+        <port name="newWSDLPort" binding="tns:newWSDLBinding">
+            <soap:address location="http://localhost:8080/pr4_v2_ws/newWSDLService"/>
+        </port>
+    </service>
+</definitions>

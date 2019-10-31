@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/home/peter/fei/asos/ulohy/pr4_v2_xml/src/newWSDL.wsdl" uri="src/conf/xml-resources/web-services/ZmluvaService/wsdl/newWSDL.wsdl"/>
+    <system systemId="file:/home/peter/fei/asos/ulohy/pr4_v2_xml/src/newXmlSchema.xsd" uri="src/conf/xml-resources/web-services/ZmluvaService/wsdl/newXmlSchema.xsd"/>
+</catalog>
